@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/css/dados.css">
+<h1>Todos os Cadastros</h1>
+<ul class="list">
+    {{!-- Criar um objeto para listar dados --}}
+    <div class="info">
+        <h2>CPF</h2>
+        {{#each info}}
+        <li>
+
+        <li><p>{{this.nome}} portador do cpf: {{this.cpf}} </p></li>
+
+        </li>
+        {{/each}}
+
+    </div>
+    <div class="info">
+        <h2>Deficiência</h2>
+        {{#each info}}
+        <li>
+
+        <li><p>Deficiência do PCD: {{this.descricao}} </p></li>
+
+        </li>
+        {{/each}}
+    </div>
+    <div class="info">
+        <h2>Descrições</h2>
+              {{#each info}}
+        <li>
+
+        <li><p>{{this.nome}} descreveu sua Deficiência: {{this.dificuldade}} </p></li>
+
+        </li>
+        {{/each}}
+    </div>
+
+
+</ul>

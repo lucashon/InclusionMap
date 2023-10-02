@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Kameron:wght@700&family=Roboto:wght@100;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+body{
+    background-color: #071952;
+    color: #fff;
+}
+
+
+.list{
+    list-style: none;
+    background-color: #d9d9d9;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 2px 2px 9px rgb(63, 60, 60);
+}
+
+.info p{
+    color: black;
+    font-weight: bold;
+    font-family: 'Kameron', serif;
+
+}
+.info p:hover{
+    cursor: pointer;
+    color: #071952;
+}
