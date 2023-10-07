@@ -2,11 +2,13 @@ const { Router } = require('express')
 const Cidadaos = require('../models/cidadaos')
 
 module.exports = class infoController{
+    
+    // rota home
     static createCadastro(request, response){
         return response.render('home')
     }
 
-    // CADAASTrar
+    // cadastrar usuarios
     static async addCadastro(request, response){
         const cadastro = {
             nome: request.body.nome,
@@ -20,14 +22,18 @@ module.exports = class infoController{
         await Cidadaos.create(cadastro)
         return response.redirect('/inclusion/home')
     }
+    
     // Mostrar
     static async mostrarInfo(request,response){
-       const quantidade = Cidadaos.count({raw: true}).then((count)=>{
-           
-        })
-    
-        console.log(quantidade)
-            return response.render('dados', {quantidade})
+      
+       try {
+        const count = await Cidadaos.count()
+        response.render('dados', {count})
+        
+       } catch (error) {
+        console.log(error)
+        response.status(500).send('Erro interno do servidor ')
+       }
             
     }
 

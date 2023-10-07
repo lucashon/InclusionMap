@@ -3,27 +3,80 @@
 
 body{
     background-color: #071952;
-    color: #fff;
+    color: #ffffff;
 }
 
+.todes h1{color: #d9d9d9; text-align: center;}
+.todes a{text-decoration: none; color: #d9d9d9; margin-left: 10px; font-size: 1.5rem; transition: color 2s;}
+.todes a:hover, a:focus {color: #97FEED;}
+.todes img{ background-color: #fff;}
 
 .list{
-    list-style: none;
     background-color: #d9d9d9;
     border-radius: 8px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    margin-left: 0px;
+    gap: 1rem;
+    justify-content: space-around;
     box-shadow: 2px 2px 9px rgb(63, 60, 60);
 }
+ .info{
+    border: 2px solid #000000; border-radius: 14px;
+    margin-top: 10px; margin-bottom: 10px;
+    padding: 8px; width: 35vh; max-width: 100%; height: auto;
+    transition:  2s ;
+  
+ }
+ .info:hover, .info:focus {
+    background-color: #0719523d; cursor: pointer;
+  
+ }
+ 
 
-.info p{
-    color: black;
-    font-weight: bold;
-    font-family: 'Kameron', serif;
+.info p{ color: black; font-weight: bold; font-family: 'Kameron', serif;}
+span{color: rgb(218, 34, 34);}
 
+
+
+
+/* Pagina de dados totais */
+
+.titulo{ font-weight: bold; font-family: 'Kameron', serif;
+    display: flex; flex-direction: column;  justify-content: space-around;  align-items: center;
+    width: 99vw;
+    max-width: 100%;
+    height: 90vh;
 }
-.info p:hover{
-    cursor: pointer;
-    color: #071952;
+.count p{ margin: 0; font-size:280px ;}
+
+.conteudo{ border: 2px solid #97FEED; border-radius: 15px; margin-top: 1rem; margin-bottom: 1rem;}
+.conteudo h2{margin: 10px 10px 10px 10px; font-size: 2rem;}
+
+.count{
+   height: 70vh; display: grid; justify-items: center; }
+.count-roda{
+    border-radius: 100% ;
+    width: 400px; height: 400px;
+    display: grid; justify-items: center; align-content: center;
+    background-color: #5B6688; 
+    transition: .7s;
+}
+.count-roda:hover{
+    background-color: #97FEED;
+    color: #423c3c;
+    box-shadow: 0px 1px 3px 0px black;
+}
+
+.link-mostrar a{ color: black; text-decoration: none;  background-color: #97FEED ; 
+    font-weight: bold; font-family: 'Kameron', serif; }
+
+.link-mostrar {  
+    background-color: #97FEED ; border: 1px solid #4d4f43; 
+    height: 30px; width: 340px; border-radius: 20px;
+    display: grid; justify-items: center; align-content: center; transition: 0.5s;
+ }
+ .link-mostrar:hover{
+    transform: scale(1.1);
 }

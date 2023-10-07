@@ -25,3 +25,4 @@ const submit = document.getElementById('submit-cadastro')
 submit.addEventListener('click',()=>{
     alert('Ok')
 })
+

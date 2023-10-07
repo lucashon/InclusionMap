@@ -7,7 +7,8 @@ const cidadaos = require('./models/cidadaos');
 
 //Importar as Rotas
 const inclusionRouters = require('./routers/cidadaoRouter')
-
+// Importar controller
+const infoController = require('./controllers/infoController')
 const app = express()
 
 //Middlewares
@@ -21,9 +22,9 @@ app.use(express.static('public'))
 
 // Rotas da aplicação:
 app.use('/inclusion', inclusionRouters)
-
+app.get('/' , infoController.createCadastro)
 conn.sync()
-.then(()=>{
+.then(()=>{ 
   app.listen(port);  
 })
 .catch((error)=>{console.log(error)})

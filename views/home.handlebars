@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
     <title>HOME</title>
 </head>
+
 <body>
-   <header class="container">
-    <div>
-        <img class="img-logo" src="/assets/logo-integrador.png" alt="Logo">
-    </div>
-    <div class="box-btn">
-        <button id="btnLogin" class="btn-entrar">Entrar</button>
-    </div>
-   </header>
+    <header class="container">
+        <div>
+            <img class="img-logo" src="/assets/logo-integrador.png" alt="Logo">
+        </div>
+        <div class="box-btn">
+            <buttonclass="btn-entrar"><a href="/inclusion/dados">PCD’S</a></button>
+                <button id="btnLogin" class="btn-entrar">Entrar</button>
+        </div>
+    </header>
 
     <section class="body-img">
         <div class="info">
             <h2>
-                Sistema de cadastro <br> online, para uma  <br>  cidade mais inclusiva:
+                Sistema de cadastro <br> online, para uma <br> cidade mais inclusiva:
             </h2>
             <p>
-                Administração pública facilitada, suprindo  a necessidade <br> de pessoas PCD’s.
+                Administração pública facilitada, suprindo a necessidade <br> de pessoas PCD’s.
             </p>
             <div class="box-cadas">
                 <button class="btn-cadastro" id="btn">
-                Cadastre-se
-            </button>
+                    Cadastre-se
+                </button>
             </div>
         </div>
     </section>
+
+
+    {{!-- Quem somos nos? --}}
+    <section class="showWe sobre-nos">  </section>
 
 
     {{!-- Modlal Cadastro --}}
@@ -54,14 +61,15 @@
                     <input type="text" name="descricao" placeholder=" Descreva a sua deficiência">
                 </div>
                 <div>
-                    <input type="text" name="dificuldade" placeholder=" Digite aqui onde e quais são suas dificuldades:">
+                    <input type="text" name="dificuldade"
+                        placeholder=" Digite aqui onde e quais são suas dificuldades:">
                 </div>
                 <!-- Enviar informações para o banco -->
                 <div>
                     <a href=""><input id="submit-cadastro" type="submit" value="Cadastrar"></a>
                 </div>
             </form>
-        </div>  
+        </div>
     </div>
 
 
@@ -86,16 +94,18 @@
                     <a href=""><input id="submit-entrar" type="submit" value="Login"></a>
                 </div>
             </form>
-        </div>  
+        </div>
     </div>
 
-    
+
 
     <footer>
         @projeto.Integrador
     </footer>
 
 
-<script src="/script/app.js"></script>
+    <script src="/script/app.js"></script>
+    <script src="/script/mostrar.js"></script>
 </body>
+
 </html>

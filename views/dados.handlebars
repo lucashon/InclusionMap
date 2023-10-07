@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/dados.css">
+    <link rel="stylesheet" href="/css/dados.css">
     <title>Document</title>
 </head>
 <body>
     
 
-    <section>
-        <div>
+    <section class="container-count">
+<div class="todes show2"> </div>
             <div class="titulo">
-                <h2>
-                    ESSE É O NÚMERO DE PCD’S CADASTRADOS ATUALMENTE:
-                    <h1>{{quantidade}}</h1>
-                </h2>
+                <div class="conteudo">
+                    <h2>  ESSE É O NÚMERO DE PCD’S <br> CADASTRADOS ATUALMENTE : </h2>
+                </div>
+                 <div class="count">
+                   <div class="count-roda"> <p>{{count}}</p> </div>
+                    <div class="link-mostrar">
+                        <a href="/inclusion/mostrar">Visualizar Cadastrados</a>
+                    </div>
+                 </div>
             </div>
-        </div>
+       
 
-        <div></div>
+        
     </section>
 
-
+<script type="module" src="/script/mostrar.js"></script>
 </body>
 </html>
