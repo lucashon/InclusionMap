@@ -1,24 +1,27 @@
 <link rel="stylesheet" href="/css/dados.css">
 
     <div class="todes show"> </div>
-    <div class="list">
+    <section class="container-list">
+        <div class="list">
     
             {{#each info}}
         <div class="info">
-            <p><span>CPF:</span> {{this.cpf}}</p>
+            <div class="box-mais">
+                <img src="/assets/perfil.avif" alt="" width="55px" height="55px"> 
             <p><span>Nome:</span> {{this.nome}}</p>
+            </div>
+            
             <p><span>Deficiência:</span> {{this.descricao}}</p>
+                
+                <a href="/inclusion/perfil/{{this.id}}">Mais Informações</a>
 
-            {{#if this.dificuldade}}
-            <p><span>Dificuldades:</span> {{this.dificuldade}}</p>
-            {{else}}
-            <p><span>Dificuldades:</span> Esse cidadão não possui dificuldades ou elas já foram resolvidas </p>
-            {{/if}}
+
 
 
         </div>
             {{/each}}
 
     </div>
+    </section>
 
 <script src="/script/mostrar.js"></script>

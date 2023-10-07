@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/css/perfil.css">
+
+<section class="glow-on-hove">
+  <div>
+    <h3>Nome Completo: {{perfil.nome}}</h3>
+    <h3>CPF: {{perfil.cpf}}</h3>
+  </div>
+  <img src="/assets/leandrinha.webp" alt="" width="130px" height="130px">
+  <div>
+    {{#if this.dificuldade}}
+    <h3>{{perfil.nome}} descreveu suas dificuldades: <span>{{perfil.dificuldade}}</span></h3>
+    {{else}}
+    <p><span>Dificuldades:</span> Esse cidadão não possui dificuldades ou elas já foram resolvidas </p>
+    {{/if}}
+
+    <h4>Deficiência: {{perfil.descricao}}</h4>
+  </div>
+  <h4>E-mail: {{perfil.email}}</h4>
+
+</section>
+
+
+<a class="showVoltar" href="/inclusion/mostrar"></a>
+
+<script src="/script/mostrar.js"></script>

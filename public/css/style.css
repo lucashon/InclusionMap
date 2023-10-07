@@ -61,23 +61,15 @@ header{ height: 14vh; border-bottom: 2px solid white; }
 /* Sobre nos */
 
 .sobre-nos{
-    margin: 10px 10px 10px 10px;
-    padding: 5px;
-    font-size: 1.7rem;
-    font-family: 'Kameron', serif;
+    margin: 10px 10px 10px 10px; padding: 5px;
+    font-size: 1.7rem; font-family: 'Kameron', serif;
 }
 .container-nos div{
-    display:grid;
-    place-items: center;
-    width: 100vw;
+    display:grid;  place-items: center;  width: 100vw;
 }
 .container-nos{
-    display: flex;
-    flex-direction: row;
+    display: flex; flex-direction: row;
 
-}
-.container-nos p{
-    
 }
 
 /* Botão de cadastro */
@@ -280,41 +272,13 @@ footer{
     align-items: end;
     flex-direction: column;
 }
-.info h2{
-    font-family: 'Kameron', serif;
-    color: white;
-    font-size: 2rem;
-    text-shadow: 0.1em 0.1em 0.2em black;
-}
-.info p{
-    font-family: arial;
-    color: #35A29F;
-    font-weight: bolder;
-    font-size: 1.3rem;
-    text-shadow: 0.1em 0.1em 0.2em black;
-}
-.info{
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 15px;
-}
-
 /* Botão de cadastro */
 
 .btn-cadastro{
-    font-size: 1.5rem;
-    border-radius: 14px;
-    width: 10rem;
-    height: 3rem;
+    font-size: 1.5rem; border-radius: 14px;
+    width: 10rem;  height: 3rem;
 }
 
-.box-cadas{
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
+.box-cadas{ margin-top: 1rem; display: flex;  align-items: center;  justify-content: center; }
 
   }

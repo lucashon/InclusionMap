@@ -2,29 +2,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 
 body{
-    background-color: #071952;
-    color: #ffffff;
+    background-image: url("/assets/todos.avif");  background-size: cover; height: 100%; color: #fff;
 }
 
-.todes h1{color: #d9d9d9; text-align: center;}
+.todes h1{color: #FFF; text-align: center;}
 .todes a{text-decoration: none; color: #d9d9d9; margin-left: 10px; font-size: 1.5rem; transition: color 2s;}
 .todes a:hover, a:focus {color: #97FEED;}
 .todes img{ background-color: #fff;}
 
+
+.container-list{
+    display: grid; place-items: center; 
+}
+
 .list{
-    background-color: #d9d9d9;
+    background-color: #fff;
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     margin-left: 0px;
+    width: 66vw;
     gap: 1rem;
     justify-content: space-around;
-    box-shadow: 2px 2px 9px rgb(63, 60, 60);
+    box-shadow:0px 0px 10px 0px #97FEED;
 }
  .info{
-    border: 2px solid #000000; border-radius: 14px;
-    margin-top: 10px; margin-bottom: 10px;
+    border: 2px solid #00000053; border-radius: 14px;
+    margin-top: 15px; margin-bottom: 5px;
     padding: 8px; width: 35vh; max-width: 100%; height: auto;
     transition:  2s ;
   
@@ -33,6 +38,9 @@ body{
     background-color: #0719523d; cursor: pointer;
   
  }
+ .info img{ border-radius: 100%;}
+ .info a{text-decoration: none; color: #5B6688;}
+ .box-mais{ display:flex ; align-items: center; gap: 2rem;}
  
 
 .info p{ color: black; font-weight: bold; font-family: 'Kameron', serif;}

@@ -44,6 +44,14 @@ module.exports = class infoController{
         return response.render('info', {info})
     }
 
+    // Perfil
+    static async perfil(request,response){
+        const id = request.params.id
+        const perfil = await Cidadaos.findOne({raw:true, where:{id:id}})
+
+        response.render('individual', {perfil})
+    }
+
 
 
     // static async deletTask(request, response){
@@ -70,15 +78,5 @@ module.exports = class infoController{
     //     await Task.update(task, {where: {id:id}})
     //     return response.redirect('/tasks/all')
     //  }
-
-    // //  Status da Tarefa
-    // static async toggletaskStatus(request, response){
-    //     const id = request.body.id
-    //     const task = {
-    //         done: request.body.done === '0' ? true : false
-    //     }
-    //     await Task.update(task, {where: {id:id}})
-    //     return response.redirect('/tasks')
-    // }
     
 }
