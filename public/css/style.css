@@ -4,8 +4,9 @@
 *{  margin: 0; padding: 0; box-sizing: border-box; }
 body{
     background: #071952; color: white ; }
+    
 /* Header */
-header{ height: 14vh; border-bottom: 2px solid white; }
+header{width: 100vw; height: 14vh; border-bottom: 2px solid white; }
 
 .img-logo{ width: 9rem ;  margin: 13px 0px 0px 15px;}
 
@@ -16,22 +17,25 @@ header{ height: 14vh; border-bottom: 2px solid white; }
     border-radius: 14px;
     width: 7rem; height: 2.4rem;
 }
-.box-btn{
-    margin-right:3.5rem ;
-}
+
 .container{
     display: flex;
     flex-direction: row;
+    gap: 4rem;
+    padding-right: 10px;
     align-items:center ;
     justify-content: space-between;
 }
+a{color: white; text-decoration: none; padding: 5px;}
 
 /* Imagem e informações  */
 .body-img{
     /* Edicões do fundo */
     background-image: url("/assets/img2.jpg");
     background-size: cover;
+    width: 100vw;
     height: 100vh;
+    border-bottom: 2px solid white;
 
     /* Position */
     display: flex;
@@ -65,7 +69,7 @@ header{ height: 14vh; border-bottom: 2px solid white; }
     font-size: 1.7rem; font-family: 'Kameron', serif;
 }
 .container-nos div{
-    display:grid;  place-items: center;  width: 100vw;
+    display:grid;  place-items: center;  width: 100%;
 }
 .container-nos{
     display: flex; flex-direction: row;
@@ -126,8 +130,9 @@ footer{
     border: 4px solid #97FEED;
     background-color: #071952;
     border-radius: 10px;
-    width: 58vh;
-    height: 40vw;
+    padding-left: 2rem;
+    padding-right: 1.9rem;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -263,9 +268,11 @@ footer{
 
 @media (max-width: 600px) {
     /* Imagem e informações  */
+
+
 .body-img{
 
-    height: 50vh;
+    width: 100%; height: auto;
 
     /* Position */
     display: flex;
@@ -278,7 +285,21 @@ footer{
     font-size: 1.5rem; border-radius: 14px;
     width: 10rem;  height: 3rem;
 }
+.info h2, .info p{font-size: 1.8rem; margin-left: 10px; margin-top: 1rem;}
 
 .box-cadas{ margin-top: 1rem; display: flex;  align-items: center;  justify-content: center; }
 
+.box-btn{display: flex; flex-direction: column;}
+
+.container-nos{ 
+    font-size: .8rem; gap: 1rem;
+    display: flex; flex-direction: column;
+}
+.container-nos img{
+    width: 100%; height: auto;
+}
+.modal{
+    width: 89%;
+    height: 65%;
+}
   }

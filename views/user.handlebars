@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/css/perfil.css">
+
+<input type="hidden" value="{{perfilCitizen.id}}" name="id">
+
+<section class="glow-on-hove">
+  <div>
+    <h3>Nome Completo: {{perfilCitizen.nome}}</h3>
+    <h3>CPF: {{perfilCitizen.cpf}}</h3>
+  </div>
+  <img src="/assets/leandrinha.webp" alt="" width="130px" height="130px">
+  <div>
+    {{#if perfilCitizen.dificuldade}}
+    <h3>Descreveu suas dificuldades: <span>{{perfilCitizen.dificuldade}}</span></h3>
+    {{else}}
+    <p id="show-else"></p>
+    {{/if}}
+
+    <h4>Deficiência: {{perfilCitizen.descricao}}</h4>
+  </div>
+  <h4>E-mail: {{perfilCitizen.email}}</h4>
+
+</section>
+
+<article>
+  <a class="showVoltar" href="/inclusion/mostrar"></a>
+
+              <form action="/inclusion/edit/{{perfilCitizen.id}}" method="get">
+              
+              <a class="showEditar" href="/inclusion/upDados"></a>
+                
+            </form>
+
+</article>
+
+<script src="/script/mostrar.js"></script>

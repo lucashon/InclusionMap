@@ -1,4 +1,6 @@
 // retornando informações no html:
+
+
 // Página De todos os cadastrados
     const mostrarBasic = document.getElementsByClassName('show')[0]
     
@@ -49,6 +51,7 @@ mostrarNos()
 
 // Mostrar "Voltar" do perfil do cidadão
 const voltar = document.getElementsByClassName('showVoltar')[0]
+const excluir = document.getElementsByClassName('showExcluir')[0]
 
 async function showVoltar(){
   voltar.innerHTML = `<div class="center">
@@ -60,5 +63,39 @@ async function showVoltar(){
     <span>Voltar</span>
   </button>
 </div>`
+
+  excluir.innerHTML = `<div class="center excluir">
+  <button class="btn">
+    <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+      <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+      <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+    </svg>
+    <span>Excluir</span>
+  </button>
+</div>`
+
+
 }
 showVoltar()
+
+const editar = document.getElementsByClassName('showEditar')[0]
+async function showedit(){
+
+  editar.innerHTML = `<div class="center excluir">
+  <button class="btn">
+    <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+      <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+      <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+    </svg>
+    <span>Editar</span>
+  </button>
+</div>`
+}
+showedit()
+
+// Mostrar condicional else do perfil
+const senao = document.getElementById('show-else')
+async function showElse(){
+  senao.innerHTML = `<span>Dificuldades:</span> Esse cidadão não possui dificuldades ou elas já foram resolvidas `
+}
+showElse()

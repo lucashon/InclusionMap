@@ -1,0 +1,39 @@
+ 
+ <link rel="stylesheet" href="/css/edit.css">
+  <div class="box-modal" id="modal">
+        <div class="modal">
+
+            <h2>Atualize seus dados</h2>
+            <form action="/inclusion/edit/" method="post">
+
+            <input type="hidden" name="id" value="{{perfilCitizen.id}}">
+
+                <div>
+                    <span>Nome:</span>
+                    <input type="text" name="nome" value="{{perfilCitizen.nome}}">
+                </div>
+                <div>
+                    <span>E-mail:</span>
+                    <input type="text" name="email" value="{{perfilCitizen.email}}">
+                </div>
+                <div>
+                    <span>CPF:</span>
+                    <input type="text" name="cpf" value="{{perfilCitizen.cpf}}">
+                </div>
+                <div>
+                    <span>Deficiência: </span>
+                    <input type="text" name="descricao" value="{{perfilCitizen.descricao}}">
+                </div>
+                <div>
+                    <span>dificuldade:</span>
+                    <input type="text" name="dificuldade"
+                       value="{{perfilCitizen.dificuldade}}">
+                </div>
+                <!-- 
+                    editar informações para o banco -->
+                <div class="#cadastroA">
+                    <a href=""><input id="submit-cadastro" type="submit" value="Editar"></a>
+                </div>
+            </form>
+        </div>
+    </div>

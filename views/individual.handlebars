@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="/css/perfil.css">
 
+<input type="hidden" value="{{perfil.id}}" name="id">
+
 <section class="glow-on-hove">
   <div>
     <h3>Nome Completo: {{perfil.nome}}</h3>
@@ -7,10 +9,10 @@
   </div>
   <img src="/assets/leandrinha.webp" alt="" width="130px" height="130px">
   <div>
-    {{#if this.dificuldade}}
-    <h3>{{perfil.nome}} descreveu suas dificuldades: <span>{{perfil.dificuldade}}</span></h3>
+    {{#if perfil.dificuldade}}
+    <h3>Descreveu suas dificuldades: <span>{{perfil.dificuldade}}</span></h3>
     {{else}}
-    <p><span>Dificuldades:</span> Esse cidadão não possui dificuldades ou elas já foram resolvidas </p>
+    <p id="show-else"></p>
     {{/if}}
 
     <h4>Deficiência: {{perfil.descricao}}</h4>
@@ -19,7 +21,15 @@
 
 </section>
 
+<article>
+  <a class="showVoltar" href="/inclusion/mostrar"></a>
 
-<a class="showVoltar" href="/inclusion/mostrar"></a>
+              <form action="/inclusion/delete/{{perfil.id}}" method="post">
+              
+              <a class="showExcluir" href="/inclusion/delete"></a>
+                
+            </form>
+
+</article>
 
 <script src="/script/mostrar.js"></script>
