@@ -96,16 +96,4 @@ module.exports = class infoController{
     }
 
 
-
-    // //  002
-    //  static async updateTask(request, response){
-    //     const id = request.body.id
-    //     const task = {
-    //         title: request.body.title,
-    //         description: request.body.description,
-    //     }
-    //     await Task.update(task, {where: {id:id}})
-    //     return response.redirect('/tasks/all')
-    //  }
-    
 }

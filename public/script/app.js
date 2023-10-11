@@ -20,6 +20,12 @@ closeLogin.addEventListener('click',()=>{
     modalLogin.style.display = 'none'
 })
 
+close.addEventListener('click',()=>{
+    modal.style.display = 'none'
+})
+closeLogin.addEventListener('click',()=>{
+    modalLogin.style.display = 'none'
+})
 
 const submit = document.getElementById('submit-cadastro')
 submit.addEventListener('click',()=>{

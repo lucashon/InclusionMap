@@ -16,7 +16,7 @@ body{
 }
 
 .list{
-    background-color: #fff;
+
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
@@ -25,18 +25,17 @@ body{
     width: 66vw;
     gap: 1rem;
     justify-content: space-around;
-    box-shadow:0px 0px 10px 0px #97FEED;
 }
- .info{
-    border: 2px solid #00000053; border-radius: 14px;
+.info{
+    border: 2px solid #00000053; border-radius: 14px; background-color: #FFF;
     margin-top: 15px; margin-bottom: 5px;
     padding: 8px; width: 35vh; max-width: 100%; height: auto;
+    box-shadow:0px 0px 10px 0px #97FEED;
     transition:  2s ;
   
  }
  .info:hover, .info:focus {
-    background-color: #0719523d; cursor: pointer;
-  
+    background-color: #78d1e7; cursor: pointer; 
  }
  .info img{ border-radius: 100%;}
  .info a{text-decoration: none; color: #5B6688;}
