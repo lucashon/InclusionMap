@@ -6,7 +6,7 @@ body{
     background: #071952; color: white ; }
     
 /* Header */
-header{width: 100vw; height: 14vh; border-bottom: 2px solid white; }
+header{width: 100%; height: 14vh; border-bottom: 2px solid white; }
 
 .img-logo{ width: 9rem ;  margin: 13px 0px 0px 15px;}
 
@@ -14,8 +14,7 @@ header{width: 100vw; height: 14vh; border-bottom: 2px solid white; }
     border: 2px solid #97FEED;
     background-color: #071952;
     color: white; font-size: 1.3rem;
-    border-radius: 14px;
-    width: 7rem; height: 2.4rem;
+    border-radius: 14px; width: 7rem; height: 2.4rem;
 }
 
 .container{
@@ -31,34 +30,23 @@ a{color: white; text-decoration: none; padding: 5px;}
 /* Imagem e informações  */
 .body-img{
     /* Edicões do fundo */
-    background-image: url("/assets/img2.jpg");
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
+    background-image: url("/assets/img2.jpg"); background-size: cover;
+    width: 100%; height: 100vh;
     border-bottom: 2px solid white;
 
     /* Position */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: self-end;
+    display: flex; flex-direction: column; justify-content: center; align-items: self-end;
 }
 .info h2{
-    font-family: 'Kameron', serif;
-    color: white;
-    font-size: 4rem;
+    font-family: 'Kameron', serif; color: white; font-size: 4rem;
     text-shadow: 0.1em 0.1em 0.2em black;
 }
 .info p{
-    font-family: arial;
-    color: #35A29F;
-    font-weight: bolder;
-    font-size: 1.5rem;
+    font-family: arial; color: #35A29F; font-weight: bolder; font-size: 1.5rem;
     text-shadow: 0.1em 0.1em 0.2em black;
 }
 .info{
-    margin-right: 5rem;
-    margin-bottom: 6rem;
+    margin-right: 5rem; margin-bottom: 6rem;
 }
 
 
@@ -81,76 +69,46 @@ a{color: white; text-decoration: none; padding: 5px;}
 .btn-cadastro{
     border: 3px solid #35A29F;
     background-color: #ffd;
-    color: #35A29F;
-    font-size: 1.9rem;
+    color: #35A29F; font-size: 1.9rem;
     border-radius: 14px;
-    width: 15rem;
-    height: 3.3rem;
+    width: 15rem; height: 3.3rem;
 }
 .btn-cadastro:hover{
-    cursor: pointer;
-    border: 3px solid #35A29F;
-    background-color: #35A29F;
-    color: #ffd;
+    cursor: pointer; border: 3px solid #35A29F;  background-color: #35A29F; color: #ffd;
 }
 .box-cadas{
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-top: 1rem; display: flex; align-items: center; justify-content: center;
 }
 
 /* Footer */
 footer{
-    font-family: 'Kameron', serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 10vh;
+    font-family: 'Kameron', serif; display: flex; align-items: center; justify-content: center; height: 10vh;
 }
 
 
 /* Modal Cadastro */
 
 .box-modal{
-    background-color: rgba(0, 0, 0, 0.501);
-    width: 100%;
-    height: 100%;
+    background-color: rgba(0, 0, 0, 0.501); width: 100%; height: 100%;
 
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
+    position: fixed; z-index: 1;
+    left: 0; top: 0;
     /* Flex-Box */ 
-    display: none;
-    align-items: center ;
-    justify-content: center;
+    display: none; align-items: center ; justify-content: center;
 }
 .modal{
-    border: 4px solid #97FEED;
-    background-color: #071952;
-    border-radius: 10px;
-    padding-left: 2rem;
-    padding-right: 1.9rem;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    border: 4px solid #97FEED; background-color: #071952; border-radius: 10px;
+    padding-left: 2rem;  padding-right: 1.9rem; 
+    height: 90vh; 
+    display: flex; flex-direction: column; align-items: center; justify-content: space-around;
 }
 .modal form{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    display: flex; flex-direction: column; gap: 2rem;
 }
 .modal input{
-    border: none;
-    background-color: #d9d9d975;
-    color: #fff;
-    font-size: 1rem;
-    border-radius: 20px;
-    width: 20rem;
-    height: 3rem;
+    border: none; background-color: #d9d9d975; color: #fff;
+    font-size: 1rem; border-radius: 20px;
+    width: 20rem; height: 3rem;
 
    
 }
@@ -159,9 +117,7 @@ footer{
     
 }
 .modal span{
-    color: #97FEED;
-    font-size: 1.3rem;
-    font-family: 'Inter', sans-serif;
+    color: #97FEED; font-size: 1.3rem; font-family: 'Inter', sans-serif;
     cursor: pointer;
 }
 .modal span:hover{
@@ -169,14 +125,9 @@ footer{
     
 }
 #submit-cadastro{
-    border: none;
-    background-color: #97FEED;
-    color: #000;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 20px;
-    width: 20rem;
-    height: 3rem;
+    border: none; background-color: #97FEED; color: #000;
+    font-size: 1rem; font-weight: bold; border-radius: 20px;
+    width: 20rem; height: 3rem;
    
 }
 
@@ -190,45 +141,28 @@ footer{
 
 .box-modal-login{
     background-color: rgba(0, 0, 0, 0.464);
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
 
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
+    position: fixed; z-index: 1;
+    left: 0; top: 0;
 
     /* Flex-Box */
     
-    display: none;
-    align-items: center ;
-    justify-content: center;
+    display: none; align-items: center ;  justify-content: center;
 }
 .modal-login{
-    border: 4px solid #97FEED;
-    background-color: #071952;
-    border-radius: 10px;
-    width: 58vh;
-    height: 30vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    border: 4px solid #97FEED;  background-color: #071952;  border-radius: 10px;
+    width: 58vh;  height: 30vw;
+    display: flex; flex-direction: column; align-items: center; justify-content: space-around;
 }
 .modal-login form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
+    display: flex; flex-direction: column; align-items: center; gap: 3rem;
 }
 .modal-login input{
     border: none;
-    background-color: #d9d9d975;
-    color: #fff;
-    font-size: 1rem;
-    border-radius: 20px;
-    width: 20rem;
-    height: 3rem;
+    background-color: #d9d9d975; color: #fff;
+    font-size: 1rem; border-radius: 20px;
+    width: 20rem; height: 3rem;
 
    
 }
@@ -237,10 +171,8 @@ footer{
     
 }
 .modal-login span{
-    color: #97FEED;
-    font-size: 1.3rem;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
+    color: #97FEED; font-size: 1.3rem;
+    font-family: 'Inter', sans-serif; cursor: pointer;
 }
 .modal-login span:hover{
     color: #cd1b1b;
@@ -248,19 +180,15 @@ footer{
 }
 #submit-entrar{
     border: none;
-    background-color: #97FEED;
-    color: #000;
-    font-size: 1rem;
-    font-weight: bold;
+    background-color: #97FEED; color: #000;
+    font-size: 1rem; font-weight: bold;
     border-radius: 20px;
-    width: 14rem;
-    height: 3rem;
+    width: 14rem;  height: 3rem;
    
 }
 
 .modal-login h2{
-    color: #97FEED;
-    font-family: 'Inter', sans-serif;
+    color: #97FEED; font-family: 'Inter', sans-serif;
 }
 
 
@@ -275,9 +203,7 @@ footer{
     width: 100%; height: auto;
 
     /* Position */
-    display: flex;
-    align-items: end;
-    flex-direction: column;
+    display: flex; align-items: end;  flex-direction: column;
 }
 /* Botão de cadastro */
 
@@ -299,7 +225,6 @@ footer{
     width: 100%; height: auto;
 }
 .modal{
-    width: 89%;
-    height: 65%;
+    width: 89%;  height: 65%;
 }
   }

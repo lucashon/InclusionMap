@@ -44,8 +44,6 @@ body{
     padding-left: 12px;
     width: 20rem;
     height: 3rem;
-
-   
 }
 .modal input::placeholder{
     color: white;
@@ -74,16 +72,10 @@ body{
     height: 3rem;
    
 }
-
-
 .modal h2{
     color: #97FEED; margin: 0px 0px 0px 0px;
     margin-top: 15px;
     font-family: 'Inter', sans-serif;
 }
 
-
-/* Responsive */
-@media (max-width: 600px) {
     
-}

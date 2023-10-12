@@ -22,10 +22,6 @@ section div{
     text-align: center;
 }
 
-
-
-
-  
   .center {
     width: 180px;
     height: 60px;
@@ -60,17 +56,14 @@ svg {
     transition: 1s ease-in-out;
     background: #4F95DA;
   }
-  
   .btn:hover svg {
     stroke-dashoffset: -480;
   }
-  
   .btn span {
     color: white;
     font-size: 18px;
     font-weight: 100;
   }
-
 
   article{
    margin-top: 15px; display: flex; flex-direction: row; gap: 12rem; align-items: center;
