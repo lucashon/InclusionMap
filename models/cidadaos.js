@@ -22,6 +22,10 @@ const sequelize = db.define('cadastro', {
         type: DataTypes.STRING,
         require: true
     }
+    ,password: {
+        type: DataTypes.STRING,
+        allowNull: true
+    }
 })
 
 module.exports = sequelize

@@ -1,35 +1,25 @@
-<link rel="stylesheet" href="/css/perfil.css">
+<section class="container my-5">
+  <div class="row g-4 align-items-center">
+    <div class="col-md-3 text-center">
+      <img class="rounded-circle" src="/assets/leandrinha.webp" alt="Perfil" width="150" height="150">
+    </div>
+    <div class="col-md-9 text-white">
+      <h3>Nome Completo: <strong>{{perfil.nome}}</strong></h3>
+      <p>CPF: <strong>{{perfil.cpf}}</strong></p>
+      {{#if perfil.dificuldade}}
+      <p>Descrito dificuldades: <strong>{{perfil.dificuldade}}</strong></p>
+      {{/if}}
+      <p>Deficiência: <strong>{{perfil.descricao}}</strong></p>
+      <p>E-mail: <strong>{{perfil.email}}</strong></p>
 
-<input type="hidden" value="{{perfil.id}}" name="id">
-
-<section class="glow-on-hove">
-  <div>
-    <h3>Nome Completo: {{perfil.nome}}</h3>
-    <h3>CPF: {{perfil.cpf}}</h3>
+      <div class="mt-3">
+        <a class="btn btn-outline-light me-2" href="/inclusion/mostrar">Voltar</a>
+        <form class="d-inline" action="/inclusion/delete/{{perfil.id}}" method="post">
+          <button class="btn btn-danger" type="submit">Excluir</button>
+        </form>
+      </div>
+    </div>
   </div>
-  <img src="/assets/leandrinha.webp" alt="" width="130px" height="130px">
-  <div>
-    {{#if perfil.dificuldade}}
-    <h3>Descreveu suas dificuldades: <span>{{perfil.dificuldade}}</span></h3>
-    {{else}}
-    <p id="show-else"></p>
-    {{/if}}
-
-    <h4>Deficiência: {{perfil.descricao}}</h4>
-  </div>
-  <h4>E-mail: {{perfil.email}}</h4>
-
 </section>
-
-<article>
-  <a class="showVoltar" href="/inclusion/mostrar"></a>
-
-              <form action="/inclusion/delete/{{perfil.id}}" method="post">
-              
-              <a class="showExcluir" href="/inclusion/delete"></a>
-                
-            </form>
-
-</article>
 
 <script src="/script/mostrar.js"></script>

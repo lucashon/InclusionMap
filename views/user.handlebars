@@ -1,35 +1,53 @@
-<link rel="stylesheet" href="/css/perfil.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="/css/perfil.css?v=3.0">
 
-<input type="hidden" value="{{perfilCitizen.id}}" name="id">
+<div class="dashboard-container">
+  
+  <!-- Painel Principal do Perfil -->
+  <div class="profile-card-modern">
+    <div class="avatar-large-container">
+      <img src="/assets/perfiltodos.png" alt="Foto de perfil" class="avatar-large">
+      <button class="btn-avatar-edit" title="Alterar Foto"><i class="fa-solid fa-camera"></i></button>
+    </div>
+    
+    <h2 class="user-fullname">{{perfilCitizen.nome}}</h2>
+    <p class="user-handle"><i class="fa-regular fa-envelope"></i> {{perfilCitizen.email}}</p>
 
-<section class="glow-on-hove">
-  <div>
-    <h3>Nome Completo: {{perfilCitizen.nome}}</h3>
-    <h3>CPF: {{perfilCitizen.cpf}}</h3>
+    <div class="input-field-group">
+      <label>CPF</label>
+      <input type="text" value="{{perfilCitizen.cpf}}" readonly class="readonly-input">
+    </div>
+
+    <div class="input-field-group">
+      <label>Deficiência Registada</label>
+      <input type="text" value="{{#if perfilCitizen.deficiencia}}{{perfilCitizen.deficiencia}}{{else}}Não declarada{{/if}}" readonly class="readonly-input">
+    </div>
+
+    <div class="card-action-buttons">
+      <a href="/inclusion/edit/{{perfilCitizen.id}}" class="btn-primary-gradient">Editar Dados</a>
+    </div>
   </div>
-  <img src="/assets/leandrinha.webp" alt="" width="130px" height="130px">
-  <div>
-    {{#if perfilCitizen.dificuldade}}
-    <h3>Descreveu suas dificuldades: <span>{{perfilCitizen.dificuldade}}</span></h3>
-    {{else}}
-    <p id="show-else"></p>
-    {{/if}}
 
-    <h4>Deficiência: {{perfilCitizen.descricao}}</h4>
+  <!-- Painel Secundário / Atividades -->
+  <div class="side-widgets-container">
+    <div class="widget-card">
+      <h3><i class="fa-solid fa-clipboard-list"></i> Dificuldades Relatadas</h3>
+      <p class="widget-content">
+        {{#if perfilCitizen.dificuldade}}
+          {{perfilCitizen.dificuldade}}
+        {{else}}
+          Sem observações de acessibilidade registadas.
+        {{/if}}
+      </p>
+    </div>
+
+    <div class="widget-card status-widget">
+      <div class="status-info">
+        <span class="status-dot active"></span>
+        <span>Estado da Conta: <strong>Ativo</strong></span>
+      </div>
+      <a href="/inclusion/mostrar" class="btn-link-back"><i class="fa-solid fa-arrow-left"></i> Voltar à Lista</a>
+    </div>
   </div>
-  <h4>E-mail: {{perfilCitizen.email}}</h4>
 
-</section>
-
-<article>
-  <a class="showVoltar" href="/inclusion/mostrar"></a>
-
-              <form action="/inclusion/edit/{{perfilCitizen.id}}" method="get">
-              
-              <a class="showEditar" href="/inclusion/upDados"></a>
-                
-            </form>
-
-</article>
-
-<script src="/script/mostrar.js"></script>
+</div>

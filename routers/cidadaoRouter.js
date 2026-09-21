@@ -6,6 +6,9 @@ const infoController = require('../controllers/infoController')
 //Localhost:3000/?/add
 router.get('/home', infoController.createCadastro)
 router.post('/home' , infoController.addCadastro)
+// auth
+router.post('/auth/login', infoController.login)
+router.post('/auth/logout', infoController.logout)
 router.get('/dados', infoController.mostrarInfo)
 router.get('/mostrar', infoController.detalhes)
 router.get('/perfil/:id', infoController.perfil)

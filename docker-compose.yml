@@ -1,0 +1,33 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: "14/02Luc"
+      MYSQL_DATABASE: "projeto"
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - db
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      DB_NAME: projeto
+      DB_USER: root
+      DB_PASS: "14/02Luc"
+      DB_HOST: db
+      DB_PORT: 3306
+      SESSION_SECRET: algumsegredo
+    ports:
+      - "3001:3000"
+
+volumes:
+  db_data:

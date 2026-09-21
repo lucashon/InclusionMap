@@ -1,71 +1,176 @@
-@import url('https://fonts.googleapis.com/css2?family=Kameron:wght@700&family=Roboto:wght@100;300;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-body{
-    background-image: url("/assets/fundoPerfil.avif");  background-size: cover; height: 90vh;
-     display: grid; place-content: center;
-     font-family: 'Kameron', serif; }
-
-section{ 
-    background-color: #fff; border-radius: 10px;
-    border: 2px solid beige; color: #071952; font-size: 1.1rem;
-    width: 52vw; height: 72vh;
-    display: grid; place-items: center ;
-    box-shadow: 2px 0px 30px 0px #071952;
-}
-section img{
-    border-radius: 50%;
-    border: 4px solid salmon;
-}
-section div{
-    display: grid; place-items: center;
-    text-align: center;
+body {
+  background: var(--bg-900) !important;
+  font-family: 'Inter', sans-serif !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
 }
 
-  .center {
-    width: 180px;
-    height: 60px;
-    position: absolute;
-  }
-  
-  .btn {
-    width: 180px;
-    height: 60px;
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid #91C9FF;
-    outline: none;
-    font-family: 'Kameron', serif;
-    transition: 1s ease-in-out;
-    border-radius: 10px;
+.dashboard-container {
+  display: flex !important;
+  gap: 24px !important;
+  max-width: 850px !important;
+  width: 100% !important;
+  padding: 20px !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
 }
 
-svg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    fill: none;
-    stroke: #fff;
-    stroke-dasharray: 150 480;
-    stroke-dashoffset: 150;
-    transition: 1s ease-in-out;
-    border-radius: 10px;
-  }
-  
-  .btn:hover {
-    transition: 1s ease-in-out;
-    background: #4F95DA;
-  }
-  .btn:hover svg {
-    stroke-dashoffset: -480;
-  }
-  .btn span {
-    color: white;
-    font-size: 18px;
-    font-weight: 100;
-  }
+.profile-card-modern {
+  flex: 1.2 !important;
+  background: var(--bg-800) !important;
+  border-radius: 20px !important;
+  padding: 30px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
 
-  article{
-   margin-top: 15px; display: flex; flex-direction: row; gap: 12rem; align-items: center;
+.avatar-large-container {
+  position: relative !important;
+  margin-bottom: 16px !important;
+}
+
+.avatar-large {
+  width: 110px !important;
+  height: 110px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 4px solid var(--accent) !important;
+}
+
+.btn-avatar-edit {
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 32px !important;
+  height: 32px !important;
+  cursor: pointer !important;
+}
+
+.user-fullname {
+  margin: 0 !important;
+  font-size: 1.4rem !important;
+  color: var(--text) !important;
+}
+
+.user-handle {
+  margin: 4px 0 20px 0 !important;
+  color: var(--text-dim) !important;
+  font-size: 0.9rem !important;
+}
+
+.input-field-group {
+  width: 100% !important;
+  margin-bottom: 14px !important;
+}
+
+.input-field-group label {
+  display: block !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  color: var(--muted) !important;
+  margin-bottom: 6px !important;
+}
+
+.readonly-input {
+  width: 100% !important;
+  padding: 10px 14px !important;
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 10px !important;
+  color: var(--text) !important;
+  font-size: 0.9rem !important;
+  box-sizing: border-box !important;
+}
+
+.card-action-buttons {
+  width: 100% !important;
+  margin-top: 10px !important;
+}
+
+.btn-primary-gradient {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  background: var(--accent) !important;
+  color: var(--bg-900) !important;
+  padding: 12px 0 !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 12px rgba(53, 162, 159, 0.3) !important;
+}
+
+.side-widgets-container {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.widget-card {
+  background: var(--bg-800) !important;
+  border-radius: 16px !important;
+  padding: 20px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+}
+
+.widget-card h3 {
+  margin: 0 0 10px 0 !important;
+  font-size: 0.95rem !important;
+  color: var(--text) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.widget-content {
+  margin: 0 !important;
+  font-size: 0.88rem !important;
+  color: var(--text-dim) !important;
+  line-height: 1.5 !important;
+}
+
+.status-widget {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.status-info {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 0.88rem !important;
+}
+
+.status-dot.active {
+  width: 10px !important;
+  height: 10px !important;
+  background-color: var(--muted) !important;
+  border-radius: 50% !important;
+}
+
+.btn-link-back {
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+}
+
+@media (max-width: 720px) {
+  .dashboard-container {
+    flex-direction: column !important;
+    max-width: 480px !important;
   }
- 
+}
