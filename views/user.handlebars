@@ -6,8 +6,7 @@
   <!-- Painel Principal do Perfil -->
   <div class="profile-card-modern">
     <div class="avatar-large-container">
-      <img src="/assets/perfiltodos.png" alt="Foto de perfil" class="avatar-large">
-      <button class="btn-avatar-edit" title="Alterar Foto"><i class="fa-solid fa-camera"></i></button>
+      <img src="{{#if perfilCitizen.foto}}{{perfilCitizen.foto}}{{else}}/assets/perfiltodos.png{{/if}}" alt="Foto de perfil" class="avatar-large">
     </div>
     
     <h2 class="user-fullname">{{perfilCitizen.nome}}</h2>
@@ -18,10 +17,10 @@
       <input type="text" value="{{perfilCitizen.cpf}}" readonly class="readonly-input">
     </div>
 
-    <div class="input-field-group">
-      <label>Deficiência Registada</label>
-      <input type="text" value="{{#if perfilCitizen.deficiencia}}{{perfilCitizen.deficiencia}}{{else}}Não declarada{{/if}}" readonly class="readonly-input">
-    </div>
+    <div class="input-field-group"><label>Estado</label><input type="text" value="{{perfilCitizen.estado}}" readonly class="readonly-input"></div>
+    <div class="input-field-group"><label>Cidade</label><input type="text" value="{{perfilCitizen.cidade}}" readonly class="readonly-input"></div>
+    <div class="input-field-group"><label>Bairro</label><input type="text" value="{{perfilCitizen.bairro}}" readonly class="readonly-input"></div>
+    <div class="input-field-group"><label>Deficiência ou condição</label><input type="text" value="{{#if perfilCitizen.doenca}}{{perfilCitizen.doenca}}{{else}}{{perfilCitizen.descricao}}{{/if}}" readonly class="readonly-input"></div>
 
     <div class="card-action-buttons">
       <a href="/inclusion/edit/{{perfilCitizen.id}}" class="btn-primary-gradient">Editar Dados</a>
@@ -33,12 +32,16 @@
     <div class="widget-card">
       <h3><i class="fa-solid fa-clipboard-list"></i> Dificuldades Relatadas</h3>
       <p class="widget-content">
-        {{#if perfilCitizen.dificuldade}}
+        {{#if perfilCitizen.barreira}}
+          {{perfilCitizen.barreira}}
+        {{else if perfilCitizen.dificuldade}}
           {{perfilCitizen.dificuldade}}
         {{else}}
           Sem observações de acessibilidade registadas.
         {{/if}}
       </p>
+      <p class="widget-content"><strong>Descrição:</strong> {{perfilCitizen.descricao}}</p>
+      <p class="widget-content"><strong>Condição:</strong> {{perfilCitizen.doenca}}</p>
     </div>
 
     <div class="widget-card status-widget">

@@ -26,6 +26,8 @@ services:
       DB_HOST: db
       DB_PORT: 3306
       SESSION_SECRET: algumsegredo
+      AUTO_SYNC: "1"
+      COOKIE_SECURE: "0"
     ports:
       - "3001:3000"
 

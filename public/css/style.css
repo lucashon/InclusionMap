@@ -164,6 +164,28 @@ img {
     color: #fff;
 }
 
+.modal-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.step-header-back {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-btn);
+    background: transparent;
+    color: var(--text);
+    padding: 0.45rem 0.8rem;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+
+.step-header-back:hover {
+    border-color: var(--muted);
+    color: var(--muted);
+}
+
 /* Hamburger */
 .hamburger {
     display: flex;
@@ -811,7 +833,9 @@ img {
 .modal input,
 .modal-login input,
 .modal .form-control,
-.modal-login .form-control {
+.modal-login .form-control,
+.modal select,
+.modal textarea {
     border: 1px solid var(--border);
     background-color: rgba(255, 255, 255, 0.08);
     color: var(--text);

@@ -14,6 +14,39 @@ const modalLoginTitle = document.getElementById('modalLoginTitle')
 const modalLoginHint = document.getElementById('modalLoginHint')
 const loginError = document.getElementById('loginError')
 
+document.querySelectorAll('[data-step-form]').forEach((form) => {
+    const steps = [...form.querySelectorAll('[data-step]')]
+    let currentStep = 0
+
+    function showStep(index) {
+        currentStep = Math.max(0, Math.min(index, steps.length - 1))
+        steps.forEach((step, stepIndex) => {
+            const active = stepIndex === currentStep
+            step.hidden = !active
+            step.classList.toggle('is-active', active)
+        })
+        const headerBack = form.closest('.modal')?.querySelector('[data-step-header-back]')
+        if (headerBack) headerBack.hidden = currentStep === 0
+    }
+
+    form.querySelectorAll('[data-next-step]').forEach((button) => {
+        button.addEventListener('click', () => {
+            const fields = [...steps[currentStep].querySelectorAll('input, select, textarea')]
+            if (fields.every((field) => field.reportValidity())) showStep(currentStep + 1)
+        })
+    })
+    form.querySelectorAll('[data-previous-step]').forEach((button) => {
+        button.addEventListener('click', () => showStep(currentStep - 1))
+    })
+    form.closest('.modal')?.querySelector('[data-step-header-back]')?.addEventListener('click', () => showStep(currentStep - 1))
+})
+
+document.querySelectorAll('input[name="cpf"]').forEach((input) => {
+    input.addEventListener('input', () => {
+        input.value = input.value.replace(/\D/g, '').slice(0, 11)
+    })
+})
+
 const LOGIN_LABELS = {
     prefeitura: { title: 'Acesso Prefeitura', hint: 'Entre para acessar o painel da prefeitura.' },
     cidadao: { title: 'Acesso Cidadão', hint: 'Entre para acessar a área do cidadão.' },
@@ -218,9 +251,9 @@ updateAuthUI()
 /* ─── Quem somos carousel ─── */
 // Carrossel configurado temporariamente com a mesma imagem
 const imagesMock = [
-    { src: '/assets/imagem3.jpg', alt: 'Inclusion Map — Slide 1' },
-    { src: '/assets/imagem3.jpg', alt: 'Inclusion Map — Slide 2' },
-    { src: '/assets/imagem3.jpg', alt: 'Inclusion Map — Slide 3' }
+    { src: '/assets/carrossel2.jpg', alt: 'Inclusion Map — Slide 1' },
+    { src: '/assets/carrossel1.jpg', alt: 'Inclusion Map — Slide 2' },
+    { src: '/assets/carrossel3.jpg', alt: 'Inclusion Map — Slide 3' }
 ]
 
 function initCarousel() {

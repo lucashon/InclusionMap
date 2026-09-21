@@ -1,28 +1,35 @@
 <link rel="stylesheet" href="/css/dados.css">
 
-    <div class="todes show"> </div>
-    <section class="container-list">
-        <div class="list">
-    
-            {{#each info}}
-        <div class="info">
-            <div class="box-mais">
-                <img src="/assets/perfil.avif" alt="" width="55px" height="55px"> 
-            <p><span>Nome:</span> {{this.nome}}</p>
+    <main class="page-container">
+        <header class="page-header">
+            <div>
+                <p class="text-uppercase small mb-1">Painel da Prefeitura</p>
+                <h1 class="page-title">Listagem completa</h1>
             </div>
-            
-            <p><span>Deficiência:</span> {{this.descricao}}</p>
-                
-                <a href="/inclusion/perfil/{{this.id}}">Mais Informações</a>
-                <a href="/inclusion/login/{{this.id}}">Login</a>
-
-
-
-
-        </div>
+            <a href="/inclusion/dados" class="btn-back">Voltar ao painel</a>
+        </header>
+    <section class="cards-grid">
+            {{#each info}}
+        <article class="user-card">
+            <div class="user-card-accent"></div>
+            <div class="user-card-body">
+                <div class="user-avatar-container">
+                    <img src="{{#if this.foto}}{{this.foto}}{{else}}/assets/perfil.avif{{/if}}" alt="Foto de {{this.nome}}" class="user-avatar">
+                </div>
+                <div class="user-info">
+                    <h2 class="user-name">{{this.nome}}</h2>
+                    <div class="user-detail-badge"><i class="fa-solid fa-universal-access"></i><span>{{this.doenca}}</span></div>
+                    <div class="user-location">{{this.bairro}}, {{this.cidade}} - {{this.estado}}</div>
+                    <p class="user-barrier">{{this.barreira}}</p>
+                </div>
+                <div class="user-card-actions">
+                    <a href="/inclusion/perfil/{{this.id}}" class="btn-card-action btn-solid">Mais informações</a>
+                </div>
+            </div>
+        </article>
+            {{else}}
+                <p>Nenhum cidadão cadastrado.</p>
             {{/each}}
-
-    </div>
     </section>
+    </main>
 
-<script src="/script/mostrar.js"></script>

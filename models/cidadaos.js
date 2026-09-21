@@ -21,6 +21,31 @@ const sequelize = db.define('cadastro', {
     dificuldade:{
         type: DataTypes.STRING,
         require: true
+    },
+    bairro:{
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    cidade:{
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    estado:{
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: 'AL'
+    },
+    doenca:{
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    barreira:{
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    foto:{
+        type: DataTypes.STRING,
+        allowNull: true
     }
     ,password: {
         type: DataTypes.STRING,

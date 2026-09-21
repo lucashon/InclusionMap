@@ -4,10 +4,12 @@
         <div class="modal">
 
             <h2>Atualize seus dados</h2>
-            <form action="/inclusion/edit/" method="post">
+            <form action="/inclusion/edit/" method="post" enctype="multipart/form-data" class="multi-step-form" data-step-form>
 
             <input type="hidden" name="id" value="{{perfilCitizen.id}}">
 
+                <div class="form-step is-active" data-step="1">
+                    <p class="step-label">Etapa 1 de 2: dados básicos</p>
                 <div>
                     <span>Nome:</span>
                     <input type="text" name="nome" value="{{perfilCitizen.nome}}">
@@ -18,21 +20,61 @@
                 </div>
                 <div>
                     <span>CPF:</span>
-                    <input type="text" name="cpf" value="{{perfilCitizen.cpf}}">
+                    <input type="text" name="cpf" value="{{perfilCitizen.cpf}}" inputmode="numeric" maxlength="11" minlength="11" pattern="[0-9]{11}" required>
+                </div>
+                <div>
+                    <span>Nova senha:</span>
+                    <input type="password" name="senha" autocomplete="new-password" placeholder="Deixe em branco para manter">
+                </div>
+                </div>
+                <div class="form-step" data-step="2" hidden>
+                    <p class="step-label">Etapa 2 de 2: informações de acessibilidade</p>
+                <div>
+                    <span>Estado:</span>
+                    <select name="estado" required>
+                        <option value="AL" {{#if (eq perfilCitizen.estado 'AL')}}selected{{/if}}>Alagoas</option>
+                    </select>
+                </div>
+                <div>
+                    <span>Cidade:</span>
+                    <select name="cidade" required>
+                        <option value="">Selecione</option>
+                        <option {{#if (eq perfilCitizen.cidade 'Maceió')}}selected{{/if}}>Maceió</option>
+                        <option {{#if (eq perfilCitizen.cidade 'Arapiraca')}}selected{{/if}}>Arapiraca</option>
+                        <option {{#if (eq perfilCitizen.cidade 'Palmeira dos Índios')}}selected{{/if}}>Palmeira dos Índios</option>
+                        <option {{#if (eq perfilCitizen.cidade 'Rio Largo')}}selected{{/if}}>Rio Largo</option>
+                        <option {{#if (eq perfilCitizen.cidade 'Penedo')}}selected{{/if}}>Penedo</option>
+                    </select>
                 </div>
                 <div>
                     <span>Deficiência: </span>
-                    <input type="text" name="descricao" value="{{perfilCitizen.descricao}}">
+                    <select name="doenca" required>
+                        <option value="{{perfilCitizen.doenca}}" selected>{{#if perfilCitizen.doenca}}{{perfilCitizen.doenca}}{{else}}Selecione{{/if}}</option>
+                        <option>Deficiência física</option>
+                        <option>Deficiência visual</option>
+                        <option>Deficiência auditiva</option>
+                        <option>Deficiência intelectual</option>
+                        <option>Deficiência múltipla</option>
+                        <option>Transtorno do espectro autista</option>
+                        <option>Outra condição</option>
+                    </select>
                 </div>
                 <div>
-                    <span>dificuldade:</span>
-                    <input type="text" name="dificuldade"
-                       value="{{perfilCitizen.dificuldade}}">
+                    <span>Barreira encontrada:</span>
+                    <textarea name="barreira" rows="3">{{perfilCitizen.barreira}}</textarea>
                 </div>
-                <!-- 
-                    editar informações para o banco -->
-                <div class="#cadastroA">
-                    <a href=""><input id="submit-cadastro" type="submit" value="Editar"></a>
+                <div>
+                    <span>Bairro:</span>
+                    <input type="text" name="bairro" value="{{perfilCitizen.bairro}}">
+                </div>
+                <div>
+                    <span>Foto:</span>
+                    <input type="file" name="foto" accept="image/jpeg,image/png,image/webp,image/avif">
+                </div>
+                <div class="step-actions">
+                    <button class="btn-nav" type="button" data-previous-step>Voltar</button>
+                    <button id="submit-cadastro" class="btn-modal-submit" type="submit">Salvar</button>
+                </div>
                 </div>
             </form>
         </div>

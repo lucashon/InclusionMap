@@ -1,0 +1,62 @@
+<header class="site-header sticky-top" role="banner" aria-label="Cabeçalho do site">
+    <div class="container header-inner d-flex align-items-center justify-content-between">
+        <a href="/" class="brand d-flex align-items-center gap-2">
+            <img class="img-logo" src="/assets/logo-integrador.png" alt="Logo Inclusion Map">
+            <span class="brand-name">Inclusion Map</span>
+        </a>
+
+        <nav class="nav-desktop d-none d-lg-flex gap-2 align-items-center" aria-label="Menu principal">
+            {{#if sessionUser}}
+                {{#if (isAdmin sessionUser.type)}}
+                    <a class="btn-nav" href="/inclusion/dados">Painel Prefeitura</a>
+                {{else}}
+                    <a class="btn-entrar" href="/inclusion/login/{{sessionUser.id}}">Meu Perfil</a>
+                {{/if}}
+                <form action="/inclusion/auth/logout" method="post" class="m-0">
+                    <button class="btn-nav" type="submit">Sair</button>
+                </form>
+            {{else}}
+                <button type="button" class="btn-nav js-open-login" data-user-type="prefeitura">Acesso Prefeitura</button>
+                <button type="button" class="btn-entrar js-open-login" data-user-type="cidadao">Acesso Cidadão</button>
+            {{/if}}
+        </nav>
+
+        <button id="hamburger" class="hamburger d-lg-none" type="button" aria-label="Abrir menu" aria-controls="navMobile" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <nav id="navMobile" class="nav-mobile d-lg-none" aria-label="Menu móvel">
+        <div class="container d-flex flex-column gap-2 py-3">
+            {{#if sessionUser}}
+                {{#if (isAdmin sessionUser.type)}}
+                    <a class="btn-nav" href="/inclusion/dados">Painel Prefeitura</a>
+                {{else}}
+                    <a class="btn-entrar text-center" href="/inclusion/login/{{sessionUser.id}}">Meu Perfil</a>
+                {{/if}}
+                <form action="/inclusion/auth/logout" method="post" class="m-0">
+                    <button class="btn-nav w-100" type="submit">Sair</button>
+                </form>
+            {{else}}
+                <button type="button" class="btn-nav js-open-login" data-user-type="prefeitura">Acesso Prefeitura</button>
+                <button type="button" class="btn-entrar js-open-login" data-user-type="cidadao">Acesso Cidadão</button>
+            {{/if}}
+        </div>
+    </nav>
+</header>
+
+<div class="box-modal-login" id="modalLogin" aria-hidden="true" role="dialog" aria-labelledby="modalLoginTitle">
+    <div class="modal-login">
+        <button type="button" id="closeLogin" class="modal-close" aria-label="Fechar modal de login">Fechar</button>
+        <h2 id="modalLoginTitle">Entrar na Conta</h2>
+        <p class="modal-login-hint" id="modalLoginHint" hidden></p>
+        <p class="modal-login-error" id="loginError" hidden></p>
+        <form action="/inclusion/auth/login" method="POST" class="w-100" id="formLogin">
+            <input type="hidden" name="userType" id="userType" value="geral">
+            <input type="hidden" name="redirectTo" id="redirectTo" value="">
+            <input class="form-control mb-2" type="email" name="email" id="loginEmail" placeholder="email" required autocomplete="email">
+            <input class="form-control mb-2" type="password" name="senha" id="loginSenha" placeholder="senha" required autocomplete="current-password">
+            <button class="btn-modal-submit" id="submit-entrar" type="submit">Login</button>
+        </form>
+    </div>
+</div>

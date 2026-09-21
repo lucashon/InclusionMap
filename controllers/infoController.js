@@ -1,6 +1,8 @@
 const { Router } = require('express')
 const bcrypt = require('bcryptjs')
 const Cidadaos = require('../models/cidadaos')
+const Administradores = require('../models/administradores')
+const { Op, fn, col } = require('sequelize')
 
 module.exports = class infoController{
     
@@ -13,12 +15,20 @@ module.exports = class infoController{
 
     // cadastrar usuarios
     static async addCadastro(request, response){
+        const cpf = String(request.body.cpf || '').replace(/\D/g, '')
+        if (cpf.length !== 11) return response.status(400).send('O CPF deve conter exatamente 11 dígitos.')
         const cadastro = {
             nome: request.body.nome,
             email: request.body.email,
-            cpf: request.body.cpf,
-            descricao: request.body.descricao,
-            dificuldade: request.body.dificuldade
+            cpf,
+            descricao: request.body.doenca || request.body.descricao,
+            dificuldade: request.body.barreira || request.body.dificuldade,
+            bairro: request.body.bairro,
+            cidade: request.body.cidade,
+            estado: request.body.estado,
+            doenca: request.body.doenca || request.body.descricao,
+            barreira: request.body.barreira || request.body.dificuldade,
+            foto: request.file ? `/uploads/${request.file.filename}` : null
         }
 
         // optionally hash password if provided
@@ -27,16 +37,33 @@ module.exports = class infoController{
             cadastro.password = hash
         }
 
-        await Cidadaos.create(cadastro)
-        return response.redirect('/inclusion/home')
+        const user = await Cidadaos.create(cadastro)
+        request.session.regenerate((regenerateError) => {
+            if (regenerateError) return response.status(503).send('Não foi possível iniciar a sessão.')
+            request.session.userId = user.id
+            request.session.userType = 'cidadao'
+            request.session.save((saveError) => {
+                if (saveError) return response.status(503).send('Não foi possível salvar a sessão.')
+                return response.redirect(`/inclusion/login/${user.id}`)
+            })
+        })
     }
     
     // Mostrar
     static async mostrarInfo(request,response){
       
        try {
-        const count = await Cidadaos.count()
-      return  response.render('dados', {count})
+                const [count, bairros] = await Promise.all([
+                        Cidadaos.count(),
+                        Cidadaos.findAll({
+                                attributes: ['bairro', [fn('COUNT', col('id')), 'count']],
+                                where: { bairro: { [Op.not]: null } },
+                                group: ['bairro'],
+                                order: [['bairro', 'ASC']],
+                                raw: true
+                        })
+                ])
+            return response.render('dados', { count, bairros })
         
        } catch (error) {
         console.log(error)
@@ -89,6 +116,26 @@ module.exports = class infoController{
                 return response.redirect('/')
             }
 
+            const admin = await Administradores.findOne({ where: { email } })
+            if (admin && await bcrypt.compare(senha, admin.password)) {
+                request.session.regenerate((regenerateError) => {
+                    if (regenerateError) {
+                        return response.status(503).json({ ok: false, message: 'Não foi possível iniciar a sessão.' })
+                    }
+                    request.session.adminId = admin.id
+                    request.session.userType = 'admin'
+                    request.session.save((saveError) => {
+                        if (saveError) {
+                            return response.status(503).json({ ok: false, message: 'Não foi possível salvar a sessão.' })
+                        }
+                        const redirect = '/inclusion/dados'
+                        if (wantsJson) return response.json({ ok: true, userId: admin.id, userType: 'admin', redirect })
+                        return response.redirect(redirect)
+                    })
+                })
+                return
+            }
+
             const user = await Cidadaos.findOne({ where: { email } })
             if (!user || !user.password) {
                 if (wantsJson) return response.status(401).json({ ok: false, message: 'Credenciais inválidas.' })
@@ -102,18 +149,16 @@ module.exports = class infoController{
             }
 
             request.session.userId = user.id
-            request.session.userType = userType || 'geral'
+            request.session.userType = 'cidadao'
 
             let redirect = `/inclusion/login/${user.id}`
-            if (redirectTo) redirect = redirectTo
-            else if (userType === 'prefeitura') redirect = '/inclusion/dados'
-            else if (userType === 'cidadao') redirect = '/inclusion/mostrar'
+            if (redirectTo && redirectTo.startsWith('/inclusion/login/')) redirect = redirectTo
 
             if (wantsJson) {
                 return response.json({
                     ok: true,
                     userId: user.id,
-                    userType: userType || 'geral',
+                    userType: 'cidadao',
                     redirect
                 })
             }
@@ -133,6 +178,9 @@ module.exports = class infoController{
 
     static async logout(request, response){
         request.session.destroy((err) => {
+            if ((request.headers.accept || '').includes('application/json')) {
+                return response.json({ ok: !err })
+            }
             return response.redirect('/')
         })
     }
@@ -152,10 +200,17 @@ module.exports = class infoController{
         const novosDados = {
             nome: request.body.nome,
             email: request.body.email,
-            cpf: request.body.cpf,
-            descricao: request.body.descricao,
-            dificuldade: request.body.dificuldade
+            cpf: String(request.body.cpf || '').replace(/\D/g, ''),
+            descricao: request.body.doenca || request.body.descricao,
+            dificuldade: request.body.barreira || request.body.dificuldade,
+            bairro: request.body.bairro,
+            cidade: request.body.cidade,
+            estado: request.body.estado,
+            doenca: request.body.doenca || request.body.descricao,
+            barreira: request.body.barreira || request.body.dificuldade
         }
+        if (request.body.senha) novosDados.password = await bcrypt.hash(request.body.senha, 10)
+        if (request.file) novosDados.foto = `/uploads/${request.file.filename}`
         await Cidadaos.update(novosDados, {where:{id:id}})
        
         return response.redirect(`/inclusion/login/${id}`)

@@ -51,5 +51,53 @@ Certifica-te de que tens as seguintes ferramentas instaladas no teu sistema:
 
 1. **Clona o repositório:**
    ```bash
-   git clone [https://github.com/teu-usuario/inclusion-map.git](https://github.com/teu-usuario/inclusion-map.git)
-   cd inclusion-map
+  git clone https://github.com/lucashon/InclusionMap.git
+  cd InclusionMap
+  ```
+
+2. **Inicia a aplicação e o banco de dados:**
+  ```bash
+  docker compose up --build
+  ```
+
+  O parâmetro `--build` recompila a imagem da aplicação quando necessário. Para iniciar os serviços em segundo plano, use:
+
+  ```bash
+  docker compose up --build -d
+  ```
+
+3. **Acessa a aplicação:**
+
+  Abra [http://localhost:3001](http://localhost:3001) no navegador.
+
+4. **Visualiza os logs:**
+  ```bash
+  docker compose logs -f app
+  ```
+
+5. **Para os containers:**
+  ```bash
+  docker compose down
+  ```
+
+  Para remover também os dados persistidos do banco, use `docker compose down -v`.
+
+### 💻 Executando localmente sem Docker
+
+Para executar a aplicação diretamente na máquina, é necessário ter o Node.js e um servidor MySQL instalados.
+
+1. **Instala as dependências:**
+  ```bash
+  npm install
+  ```
+
+2. **Inicia a aplicação em modo de desenvolvimento:**
+  ```bash
+  npm run dev
+  ```
+
+  Para iniciar sem o Nodemon, use:
+
+  ```bash
+  npm start
+  ```

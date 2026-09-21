@@ -187,3 +187,17 @@ body {
     margin-top: 10px !important;
   }
 }
+
+.user-location,
+.user-barrier {
+  margin: 0;
+  color: #475569;
+  font-size: 0.86rem;
+}
+
+.user-barrier {
+  max-width: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

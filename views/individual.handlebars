@@ -10,6 +10,12 @@
       <p>Descrito dificuldades: <strong>{{perfil.dificuldade}}</strong></p>
       {{/if}}
       <p>Deficiência: <strong>{{perfil.descricao}}</strong></p>
+      <p>Condição: <strong>{{perfil.doenca}}</strong></p>
+      <p>Estado: <strong>{{perfil.estado}}</strong></p>
+      <p>Cidade: <strong>{{perfil.cidade}}</strong></p>
+      <p>Bairro: <strong>{{perfil.bairro}}</strong></p>
+      <p>Barreira encontrada: <strong>{{perfil.barreira}}</strong></p>
+      {{#if perfil.foto}}<img src="{{perfil.foto}}" alt="Foto enviada por {{perfil.nome}}" width="180">{{/if}}
       <p>E-mail: <strong>{{perfil.email}}</strong></p>
 
       <div class="mt-3">

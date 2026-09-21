@@ -1,42 +1,3 @@
-<!-- HEADER (sticky, blur) -->
-<header class="site-header sticky-top" role="banner" aria-label="Cabeçalho do site">
-    <div class="container header-inner d-flex align-items-center justify-content-between">
-        <a href="/" class="brand d-flex align-items-center gap-2">
-            <img class="img-logo" src="/assets/logo-integrador.png" alt="Logo Inclusion Map">
-            <span class="brand-name">Inclusion Map</span>
-        </a>
-
-        <!-- Desktop nav -->
-        <nav class="nav-desktop d-none d-lg-flex gap-2 align-items-center" role="navigation" aria-label="Menu principal">
-            <button type="button" class="btn-nav js-open-login" data-user-type="prefeitura" data-redirect="/inclusion/dados">Acesso Prefeitura</button>
-            <button type="button" class="btn-nav js-open-login" data-user-type="cidadao" data-redirect="/inclusion/mostrar">Acesso Cidadão</button>
-            <button id="btnLogin" class="btn-entrar js-open-login" type="button" data-user-type="geral" aria-label="Abrir login">Entrar</button>
-            <div id="authLoggedDesktop" class="auth-logged d-none align-items-center gap-2">
-                <a id="btnMeuPerfil" class="btn-entrar" href="#">Meu Perfil</a>
-                <button id="btnLogout" class="btn-nav" type="button">Sair</button>
-            </div>
-        </nav>
-
-        <!-- Hamburger (mobile) -->
-        <button id="hamburger" class="hamburger d-lg-none" type="button" aria-label="Abrir menu" aria-controls="navMobile" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-
-    <!-- Mobile full-width menu (hidden by default) -->
-    <nav id="navMobile" class="nav-mobile d-lg-none" aria-label="Menu móvel">
-        <div class="container d-flex flex-column gap-2 py-3">
-            <button type="button" class="btn-nav js-open-login" data-user-type="prefeitura" data-redirect="/inclusion/dados">Acesso Prefeitura</button>
-            <button type="button" class="btn-nav js-open-login" data-user-type="cidadao" data-redirect="/inclusion/mostrar">Acesso Cidadão</button>
-            <button id="btnLoginMobile" class="btn-entrar js-open-login" type="button" data-user-type="geral" aria-label="Abrir login móvel">Entrar</button>
-            <div id="authLoggedMobile" class="auth-logged d-none flex-column gap-2">
-                <a id="btnMeuPerfilMobile" class="btn-entrar text-center" href="#">Meu Perfil</a>
-                <button id="btnLogoutMobile" class="btn-nav" type="button">Sair</button>
-            </div>
-        </div>
-    </nav>
-</header>
-
 <!-- HERO -->
 <section class="hero">
     <div class="hero-inner container">
@@ -51,7 +12,7 @@
             </div>
 
             <div class="col-lg-6 hero-right d-none d-lg-flex justify-content-center">
-                <img src="/assets/imagem3.jpg" alt="Inclusão - pessoas diversas em Jaraguá do Sul" class="hero-image img-fluid">
+                <img src="/assets/PREF.jpg" alt="Inclusão - pessoas diversas em Jaraguá do Sul" class="hero-image img-fluid">
             </div>
         </div>
     </div>
@@ -208,38 +169,52 @@
 <div class="box-modal backdrop" id="modal" aria-hidden="true" role="dialog" aria-labelledby="modalCadastroTitle">
     <div class="modal">
         <button type="button" id="close" class="modal-close" aria-label="Fechar modal">Fechar</button>
-        <h2 id="modalCadastroTitle">Cadastrar PCD</h2>
-        <form action="/inclusion/home" method="post" class="w-100">
-            <div><input class="form-control mb-2" type="text" name="nome" placeholder="Digite seu nome completo" required autocomplete="name"></div>
-            <div><input class="form-control mb-2" type="email" name="email" placeholder="email" required autocomplete="email"></div>
-            <div><input class="form-control mb-2" type="text" name="cpf" placeholder="CPF" autocomplete="off"></div>
-            <div><input class="form-control mb-2" type="text" name="descricao" placeholder="Descreva a sua deficiência"></div>
-            <div><input class="form-control mb-2" type="text" name="dificuldade" placeholder="Digite suas dificuldades"></div>
-            <div><input class="form-control mb-2" type="password" name="senha" placeholder="Crie uma senha (opcional)" autocomplete="new-password"></div>
-            <div><button id="submit-cadastro" class="btn-modal-submit" type="submit">Cadastrar</button></div>
+        <div class="modal-title-row">
+            <h2 id="modalCadastroTitle">Cadastrar PCD</h2>
+            <button type="button" class="step-header-back" data-step-header-back hidden>Voltar</button>
+        </div>
+        <form action="/inclusion/home" method="post" enctype="multipart/form-data" class="w-100 multi-step-form" data-step-form>
+            <div class="form-step is-active" data-step="1">
+                <p class="step-label">Etapa 1 de 2: dados básicos</p>
+                <input class="form-control mb-2" type="text" name="nome" placeholder="Nome completo" required autocomplete="name">
+                <input class="form-control mb-2" type="email" name="email" placeholder="Email" required autocomplete="email">
+                <input class="form-control mb-2" type="text" name="cpf" placeholder="CPF (11 dígitos)" inputmode="numeric" maxlength="11" minlength="11" pattern="[0-9]{11}" required autocomplete="off">
+                <input class="form-control mb-2" type="password" name="senha" placeholder="Crie uma senha" required autocomplete="new-password">
+                <button class="btn-modal-submit" type="button" data-next-step>Continuar</button>
+            </div>
+            <div class="form-step" data-step="2" hidden>
+                <p class="step-label">Etapa 2 de 2: informações de acessibilidade</p>
+                <select class="form-control mb-2" name="estado" required>
+                    <option value="AL" selected>Alagoas</option>
+                </select>
+                <select class="form-control mb-2" name="cidade" required>
+                    <option value="" selected disabled>Selecione a cidade</option>
+                    <option>Maceió</option>
+                    <option>Arapiraca</option>
+                    <option>Palmeira dos Índios</option>
+                    <option>Rio Largo</option>
+                    <option>Penedo</option>
+                    <option>União dos Palmares</option>
+                    <option>São Miguel dos Campos</option>
+                </select>
+                <input class="form-control mb-2" type="text" name="bairro" placeholder="Bairro" required>
+                <select class="form-control mb-2" name="doenca" required>
+                    <option value="" selected disabled>Tipo de deficiência ou condição</option>
+                    <option>Deficiência física</option>
+                    <option>Deficiência visual</option>
+                    <option>Deficiência auditiva</option>
+                    <option>Deficiência intelectual</option>
+                    <option>Deficiência múltipla</option>
+                    <option>Transtorno do espectro autista</option>
+                    <option>Outra condição</option>
+                </select>
+                <textarea class="form-control mb-2" name="barreira" rows="3" placeholder="Descreva a barreira encontrada"></textarea>
+                <input class="form-control mb-3" type="file" name="foto" accept="image/jpeg,image/png,image/webp,image/avif">
+                <div class="step-actions">
+                    <button id="submit-cadastro" class="btn-modal-submit" type="submit">Cadastrar</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>
 
-<!-- MODAL LOGIN -->
-<div class="box-modal-login" id="modalLogin" aria-hidden="true" role="dialog" aria-labelledby="modalLoginTitle">
-    <div class="modal-login">
-        <button type="button" id="closeLogin" class="modal-close" aria-label="Fechar modal de login">Fechar</button>
-        <h2 id="modalLoginTitle">Entrar na Conta</h2>
-        <p class="modal-login-hint" id="modalLoginHint" hidden></p>
-        <p class="modal-login-error" id="loginError" hidden></p>
-        <form action="/inclusion/auth/login" method="POST" class="w-100" id="formLogin">
-            <input type="hidden" name="userType" id="userType" value="geral">
-            <input type="hidden" name="redirectTo" id="redirectTo" value="">
-            <div>
-                <input class="form-control mb-2" type="email" name="email" id="loginEmail" placeholder="email" required autocomplete="email">
-            </div>
-            <div>
-                <input class="form-control mb-2" type="password" name="senha" id="loginSenha" placeholder="senha" required autocomplete="current-password">
-            </div>
-            <div>
-                <button class="btn-modal-submit" id="submit-entrar" type="submit">Login</button>
-            </div>
-        </form>
-    </div>
-</div>

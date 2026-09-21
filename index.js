@@ -5,9 +5,12 @@ const exphbs = require('express-handlebars')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const port = process.env.PORT || 3000
+const secureCookies = process.env.COOKIE_SECURE === '1'
 
 const conn = require('./db/conn')
 require('./models/cidadaos')
+const Administradores = require('./models/administradores')
+const bcrypt = require('bcryptjs')
 
 const session = require('express-session')
 const MySQLStore = require('express-mysql-session')(session)
@@ -21,7 +24,12 @@ app.use(express.json())
 app.use(helmet())
 if (process.env.NODE_ENV !== 'production') app.use(morgan('dev'))
 
-app.engine('handlebars', exphbs.engine())
+app.engine('handlebars', exphbs.engine({
+  helpers: {
+    isAdmin: (type) => type === 'admin',
+    eq: (left, right) => left === right
+  }
+}))
 app.set('view engine', 'handlebars')
 app.disable('view cache')
 app.use(express.static(path.join(__dirname, 'public')))
@@ -36,6 +44,20 @@ async function init() {
   try {
     await conn.authenticate()
     console.log('DB conectado!')
+
+    await Administradores.sync()
+    const adminEmail = 'prefeitura.alagoas@inclusionmap.com'
+    const adminPassword = await bcrypt.hash('prefeitura', 10)
+    const [admin] = await Administradores.findOrCreate({
+      where: { email: adminEmail },
+      defaults: { nome: 'Prefeitura de Alagoas', password: adminPassword }
+    })
+    if (!admin.changed('password')) {
+      await admin.update({
+        nome: 'Prefeitura de Alagoas',
+        password: adminPassword
+      })
+    }
 
     const mysqlStore = new MySQLStore({
       host: process.env.DB_HOST || '127.0.0.1',
@@ -75,11 +97,19 @@ async function init() {
       saveUninitialized: false,
       cookie: {
         maxAge: 24 * 60 * 60 * 1000,
-        secure: isProd,
-        sameSite: isProd ? 'none' : 'lax',
+        secure: secureCookies,
+        sameSite: secureCookies ? 'none' : 'lax',
       },
     })
   )
+
+  app.use((request, response, next) => {
+    response.locals.sessionUser = request.session.userType ? {
+      id: request.session.userId,
+      type: request.session.userType
+    } : null
+    next()
+  })
 
   app.use('/inclusion', inclusionRouters)
   app.get('/', infoController.createCadastro)
