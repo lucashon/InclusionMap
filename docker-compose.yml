@@ -7,15 +7,22 @@ services:
       MYSQL_ROOT_PASSWORD: "14/02Luc"
       MYSQL_DATABASE: "projeto"
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
+    healthcheck:
+      # Adicionado usuário e senha para o ping funcionar
+      test: ["CMD", "sh", "-c", "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD"]
+      timeout: 20s
+      retries: 10
 
   app:
     build: .
     restart: unless-stopped
     depends_on:
-      - db
+      # Alterado para exigir que o banco esteja "saudável"
+      db:
+        condition: service_healthy
     volumes:
       - ./:/usr/src/app
       - /usr/src/app/node_modules

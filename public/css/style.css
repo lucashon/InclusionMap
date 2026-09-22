@@ -236,7 +236,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url('/assets/fundoPerfil.avif');
+    background-image: url('/assets/fotoHome.jpg');
     background-size: cover;
     background-position: center;
     background-color: var(--bg-900);
